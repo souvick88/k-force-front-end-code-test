@@ -8,9 +8,49 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./enrollee.component.css"],
 })
 export class EnrolleeComponent implements OnInit {
+  state = "normal";
+  type: string;
+  id: string;
   names: [];
+  newName: string;
+  active;
+  updateData = {};
 
-  constructor() {}
+  onRead(id) {
+    this.updateData = {
+      "name": this.newName,
+      "active": (this.active === "true") ? true : false,
+    };
+    console.log(id);
+    console.log(this.updateData);
+  }
+  putGet() {
+    this._enrollService.getEnrollments()
+      .subscribe((res) => {
+        this.names = res;
+        // var newName = JSON.stringify(res);
+        // console.log(newName);
+      }, (err) => console.log(err));
+  }
+  onUpdate(id) {
+    let endPoints = id;
+    this.http.put<any>(
+      "http://localhost:8080/enrollees/" + endPoints,
+      this.updateData = {
+        "name": this.newName,
+        "active": (this.active === "true") ? true : false,
+      },
+    )
+      .subscribe((res) => {
+        console.log(res);
+        this.putGet();
+      });
+  }
+
+  constructor(
+    private _enrollService: EnrolleeServiceService,
+    private http: HttpClient,
+  ) {}
 
   ngOnInit(): void {
     this._enrollService.getEnrollments()

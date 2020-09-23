@@ -5,6 +5,13 @@
     <h5 class="card-title">{{name.dateOfBirth}}</h5>
     <h5 class="card-title">{{name.id}}</h5>
 
+    <input type="text" [(ngModel)]="newName">
+    <input type="text" [(ngModel)]="active">
+
+
+    <button (click)="onUpdate(name.id)">click here</button>
+    <button (click)="onRead(name.id)">logger here</button>
+
 
   </div>
 </div>
