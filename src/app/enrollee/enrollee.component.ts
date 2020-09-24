@@ -8,6 +8,10 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./enrollee.component.css"],
 })
 export class EnrolleeComponent implements OnInit {
+  isDisplay = true;
+  isActive = false;
+  isInactive = false;
+
   state = "normal";
   type: string;
   id: string;
@@ -16,6 +20,7 @@ export class EnrolleeComponent implements OnInit {
   newName: string;
   active;
   updateData = {};
+  pickDisplay = "isDisplay";
 
   //fix for displaying edit options only upon click on particular user
   flag: boolean = false;
@@ -27,6 +32,16 @@ export class EnrolleeComponent implements OnInit {
       this.flag = true;
       this.index = i;
     }
+  }
+
+  onDisplayActive() {
+    this.pickDisplay = "isActive";
+  }
+  onDisplayInactive() {
+    this.pickDisplay = "isInactive";
+  }
+  onDisplayAll() {
+    this.pickDisplay = "isDisplay";
   }
 
   onRead(id) {
