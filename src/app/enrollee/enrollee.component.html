@@ -1,9 +1,18 @@
 <div class="container w-75">
 
-  <div>
-    <button type="button" (click)="onDisplayAll()" class="btn btn-primary btn-lg">Display All</button>
-    <button type="button" (click)="onDisplayActive()" class="btn btn-primary btn-lg">Display Active</button>
-    <button type="button" (click)="onDisplayInactive()" class="btn btn-primary btn-lg">display inactive</button>
+  <div class="w-75 mx-auto">
+    <div class="text-center row ">
+
+      <div class="col-4">
+        <button type="button" (click)="onDisplayAll()" class="btn btn-info btn-lg">Display All</button>
+      </div>
+      <div class="col-4">
+        <button type="button" (click)="onDisplayActive()" class="btn btn-primary btn-lg">Display Active</button>
+      </div>
+      <div class="col-4">
+        <button type="button" (click)="onDisplayInactive()" class="btn btn-danger btn-lg">Display inactive</button>
+      </div>
+    </div>
   </div>
 
   <div [ngSwitch]="pickDisplay">
