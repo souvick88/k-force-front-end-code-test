@@ -16,6 +16,18 @@ export class EnrolleeComponent implements OnInit {
   active;
   updateData = {};
 
+  //fix for displaying edit options only upon click on particular user
+  flag: boolean = false;
+  index: number = 0;
+  toggle(i): void {
+    if (this.index == i && this.flag) {
+      this.index = null;
+    } else {
+      this.flag = true;
+      this.index = i;
+    }
+  }
+
   onRead(id) {
     this.updateData = {
       "name": this.newName,

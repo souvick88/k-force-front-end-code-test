@@ -1,16 +1,21 @@
-<div class="" *ngFor="let name of names">
+<div class="" *ngFor="let name of names;let i= index">
   <div class="fontColor">
     <h5 class="card-title">{{name.name}}</h5>
     <h5 class="card-title">{{name.active}}</h5>
     <h5 class="card-title">{{name.dateOfBirth}}</h5>
     <h5 class="card-title">{{name.id}}</h5>
 
-    <input type="text" [(ngModel)]="newName">
-    <input type="text" [(ngModel)]="active">
+    <div *ngIf=" i == index && flag">
+      <input type="text" [(ngModel)]="newName">{{newName}}
+      <input type="text" [(ngModel)]="active">
+      <button (click)="onUpdate(name.id)">Save</button>
+    </div>
+
+    <button (click)="toggle(i)">Edit</button>
 
 
-    <button (click)="onUpdate(name.id)">click here</button>
-    <button (click)="onRead(name.id)">logger here</button>
+
+    <!-- <button (click)="onRead(name.id)">logger here</button> -->
 
 
   </div>
