@@ -12,6 +12,7 @@ export class EnrolleeComponent implements OnInit {
   type: string;
   id: string;
   names: [];
+  newProp;
   newName: string;
   active;
   updateData = {};

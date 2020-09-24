@@ -1,23 +1,47 @@
-<div class="" *ngFor="let name of names;let i= index">
-  <div class="fontColor">
-    <h5 class="card-title">{{name.name}}</h5>
-    <h5 class="card-title">{{name.active}}</h5>
-    <h5 class="card-title">{{name.dateOfBirth}}</h5>
-    <h5 class="card-title">{{name.id}}</h5>
+<div class="container w-75">
+  <div class="row">
+    <div class="col-6 mt-2 mb-2 " (mouseenter)="toggle(i)" *ngFor="let name of names;let i= index">
+      <div class="card bg-transparent" [ngClass]="{' shadow p-3 mb-5  rounded ': i == index && flag }">
+        <div class="card-body">
+          <h5 class="card-title">{{name.name}}</h5>
+          <div class="row">
+            <div class="col-6 card-text border-bottom mb-1 mt-1">User ID : </div>
+            <div class="col-6 card-text border-bottom mb-1 mt-1"> {{name.id}}</div>
+            <div class="col-6 card-text border-bottom mb-1 mt-1">Activation status : </div>
+            <div class="col-6 card-text border-bottom mb-1 mt-1"> {{name.active}}</div>
+            <div class="col-6 card-text border-bottom mb-1 mt-1">Date of Birth : </div>
+            <div class="col-6 card-text border-bottom mb-1 mt-1"> {{name.dateOfBirth}}</div>
+          </div>
+          <div *ngIf=" i == index && flag">
 
-    <div *ngIf=" i == index && flag">
-      <input type="text" [(ngModel)]="newName">{{newName}}
-      <input type="text" [(ngModel)]="active">
-      <button (click)="onUpdate(name.id)">Save</button>
+
+            <div class="input-group input-group-sm mb-3 mt-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Edit name :</span>
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="newName" aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm">
+            </div>
+
+            <div class="input-group input-group-sm mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Edit activation (true or false) :</span>
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="active" aria-label="Small"
+                aria-describedby="inputGroup-sizing-sm">
+            </div>
+
+
+
+          </div>
+          <div class="text-center">
+
+            <a href="#" *ngIf=" i == index && flag" class="btn btn-primary w-50 " (click)="onUpdate(name.id)">Save</a>
+          </div>
+
+        </div>
+      </div>
     </div>
-
-    <button (click)="toggle(i)">Edit</button>
-
-
-
-    <!-- <button (click)="onRead(name.id)">logger here</button> -->
 
 
   </div>
-</div>
-<h1>test</h1>
